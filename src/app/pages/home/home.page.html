@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar no-border color="primary">
+    <ion-buttons slot="start" class="ion-padding">
+      <ion-back-button defaultHref="home" color="primary"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Home
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="services ion-no-padding">
+    <ion-row class="services-rows">
+      <ion-col class="services-box" (click)="openScanner()">
+        <img src="assets/images/qr-code.png">
+        <span>Scan QRCode</span>
+      </ion-col>
+      <ion-col class="services-box" (click)="showCredits()">
+        <img src="assets/images/info.png">
+        <span>About App</span>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-title class="ion-text-center" color="medium">
+      Car Management App
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,183 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="end" class="ion-padding">
+      <ion-button color="light" (click)="navigateHome()">
+        <ion-icon name="close-circle-sharp" size="large"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Detail</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-no-padding">
+  <div class="main">
+    <form novalidate (ngSubmit)="onSubmit()">
+      <ion-item-divider>
+        <ion-label font-bold>Validasi Kendaraan</ion-label>
+      </ion-item-divider>
+      <ion-card class="ion-text-center ion-justify-content-center">
+        <img [src]="'http://139.180.190.117:82/Content/static/' + dataParsed?.vehicle?.PATH"
+          alt="https://via.placeholder.com/250x200?text=Simple+dummy+image" />
+      </ion-card>
+      <ion-card class="card ion-no-margin ion-padding-bottom">
+        <ion-card-content>
+          <ion-row>
+            <ion-col>
+              <ion-text><span class="label">Tanggal Berlaku :</span></ion-text>
+              <ion-input clearInput class="input ion-padding-horizontal"
+                [value]="dataParsed?.transaction?.EFFECTIVE | date: 'medium'" readonly>
+              </ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-text><span class="label">Tanggal Berakhir :</span></ion-text>
+              <ion-input clearInput class="input ion-padding-horizontal"
+                [value]="dataParsed?.transaction?.COMPLETION | date: 'medium'" readonly>
+              </ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-text><span class="label">Status :</span></ion-text>
+              <ion-row class="ion-padding-top">
+                <ion-col size="5">
+                  <ion-text>
+                    <h6>Tidak Boleh Masuk (non-valid)</h6>
+                  </ion-text>
+                </ion-col>
+                <ion-col size="4">
+                  <ion-toggle color="success" *ngIf="dataParsed?.transaction?.VALID == 1" class="ion-padding-horizontal"
+                    checked="true" disabled></ion-toggle>
+                  <ion-toggle color="success" *ngIf="dataParsed?.transaction?.VALID == 0" class="ion-padding-horizontal"
+                    checked="false" disabled></ion-toggle>
+                </ion-col>
+                <ion-col size="3">
+                  <ion-text>
+                    <h6>Valid</h6>
+                  </ion-text>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+      <ion-item-divider>
+        <ion-label font-bold>Informasi Umum</ion-label>
+      </ion-item-divider>
+      <ion-card class="card ion-no-margin ion-padding-bottom">
+        <ion-card-content>
+          <ion-row>
+            <ion-col>
+              <ion-text><span class="label">Pemilik :</span></ion-text>
+              <ion-input clearInput class="input ion-padding-horizontal" [value]="dataParsed?.owner?.NAME" readonly>
+              </ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-text><span class="label">Alamat :</span></ion-text>
+              <ion-input clearInput placeholder="Alamat" class="input ion-padding-horizontal"
+                [value]="dataParsed?.owner?.ALAMAT" readonly>
+              </ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-text><span class="label">NIK :</span></ion-text>
+              <ion-input clearInput type="number" placeholder="NIK" class="input ion-padding-horizontal"
+                [value]="dataParsed?.owner?.NIK" readonly>
+              </ion-input>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+      <ion-item-divider>
+        <ion-label font-bold>Informasi Kendaraan</ion-label>
+      </ion-item-divider>
+      <ion-card class="card ion-no-margin ion-padding-bottom">
+        <ion-card-content>
+          <ion-row>
+            <ion-col>
+              <ion-text><span class="label">Merk :</span></ion-text>
+              <ion-input clearInput placeholder="Merk" class="input ion-padding-horizontal"
+                [value]="dataParsed?.vehicle?.MERK" readonly>
+              </ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-text><span class="label">Type :</span></ion-text>
+              <ion-input clearInput placeholder="Type" class="input ion-padding-horizontal"
+                [value]="dataParsed?.vehicle?.TYPE" readonly>
+              </ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-text><span class="label">Jenis :</span></ion-text>
+              <ion-input clearInput placeholder="Jenis" class="input ion-padding-horizontal"
+                [value]="dataParsed?.vehicle?.JENIS" readonly>
+              </ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-text><span class="label">Isi Silinder :</span></ion-text>
+              <ion-input clearInput placeholder="Isi Silinder" class="input ion-padding-horizontal"
+                [value]="dataParsed?.vehicle?.ISI_SILINDER" readonly>
+              </ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-text><span class="label">NIK Kendaraan :</span></ion-text>
+              <ion-input clearInput type="number" placeholder="NIK Kendaraan" class="input ion-padding-horizontal"
+                [value]="dataParsed?.vehicle?.NIK" readonly>
+              </ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-text><span class="label">No. Mesin :</span></ion-text>
+              <ion-input clearInput type="text" class="input ion-padding-horizontal"
+                [value]="dataParsed.vehicle.NO_MESIN" readonly>
+              </ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-text><span class="label">Warna :</span></ion-text>
+              <ion-input clearInput placeholder="Warna" class="input ion-padding-horizontal"
+                [value]="dataParsed?.vehicle?.COLOR" readonly>
+              </ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-text><span class="label">Bahan Bakar :</span></ion-text>
+              <ion-input clearInput placeholder="Bahan Bakar" class="input ion-padding-horizontal"
+                [value]="dataParsed?.vehicle?.FUEL" readonly>
+              </ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-text><span class="label">No. BPKB :</span></ion-text>
+              <ion-input clearInput type="number" placeholder="No. BPKB" class="input ion-padding-horizontal"
+                [value]="dataParsed?.vehicle?.NO_BPKB" readonly>
+              </ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row class="ion-padding-top ion-padding-bottom ion-margin-top">
+            <ion-col>
+              <!-- <ion-button box-shadow expand="block" color="primary" (click)="navigateHome()">
+                <strong class="white">Submit</strong>
+              </ion-button> -->
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+    </form>
+  </div>
+</ion-content>

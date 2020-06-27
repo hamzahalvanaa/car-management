@@ -1,5 +1,7 @@
 {
   "name": "car-management",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
